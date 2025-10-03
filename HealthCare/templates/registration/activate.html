@@ -1,0 +1,20 @@
+{% extends "login/login_base.html" %}
+{% block title %}Diary{% endblock %}
+{% block content %}
+<div class="container">
+    {% for message in messages %}
+        <div class="alert alert-warning">{{ message.tags }}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center">
+                    <h3>Thanks for register</h3>
+                    <h3>Account Activation Fail</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

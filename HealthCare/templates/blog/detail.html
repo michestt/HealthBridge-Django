@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>{{post.title}}</h2>
+{% for tag in post.tags.all %}
+<a href="#" class="badge badge-info" >{{ tag }}</a>
+{% endfor %}
+<p>{{post.description}}</p>
+<img src="{{ post.pic.url }}">
+<p>{{post.published}}</p>
+    <br>
+    <h2 class="subheader">Comments</h2>
+    {% for comment in post.comments.all %}
+        <article class="media">
+            <div class="">
+                <div class="content">
+                    <p>
+                        <strong>{{ comment.name }}</strong>
+                        <small>{{ comment.date_added }}</small>
+                        <br>
+                        {{ comment.body }}
+                    </p>
+                </div>
+            </div>
+        </article>
+    {% empty %}
+        <div class="notification">
+            <p>No Comment Yet!</p>
+        </div>
+    {% endfor %}
+
+    <h3 class="subtitle">Add comment</h3>
+    <form method="POST" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock content %}        

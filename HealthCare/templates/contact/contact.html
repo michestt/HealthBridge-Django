@@ -1,0 +1,66 @@
+{% extends 'contact/contact_base.html' %}
+{% block title %} Contact Us {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/main_picture.jpg' %}{% endblock %}
+{% block color1 %} orange lighten-2{% endblock %}
+{% block color2 %} orange lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Contact Us</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+{% load materializecss %}
+
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col m12">
+                    <div class="card-panel">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+
+                        {% if form_q1 and form_q2%}
+                            <form name="quest1" action="." method="GET">
+                                {% csrf_token %}
+                                <h4>Message Subject</h4>
+                                {{ form_res_q1|materializecss }}
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Next</button>
+                            </form>
+                            <form name="quest1" action="." method="POST">
+                                {% csrf_token %}
+                                <h4>Contact Form</h4>
+                                {{ form_q2|materializecss }}
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </form>
+                        {% elif form_q1 %}
+                            <form name="quest1" action="." method="GET">
+                                {% csrf_token %}
+                                <h4>Message Subject</h4>
+                                {{ form_q1|materializecss }}
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Next</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

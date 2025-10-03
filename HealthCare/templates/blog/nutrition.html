@@ -1,0 +1,117 @@
+{% extends 'blog/base_blog.html' %}
+{% block title %} Blog|Nutrition {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %}green{% endblock %}
+{% block color2 %}green{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{#    <ul id='feature-dropdown' class='dropdown-content'>#}
+{#      <li><a href="main_homepage.html">Fullscreen Header</a></li>#}
+{#      <li><a href="horizontal.html">Horizontal Style</a></li>#}
+{#      <li><a href="no-image.html">No Image Expand</a></li>#}
+{#    </ul>#}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Nutrition</h1>
+    <div class="tagline">Healthy life</div>
+{% endblock %}
+
+
+{% block categories %}
+    <li class="active"><a href="#all">All</a></li>
+    {% for tag in common_tags %}
+        <li><a href="#{{ tag }}">{{ tag }}</a></li>
+    {% endfor %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="col l4 m6 s12 gallery-item gallery-expand gallery-filter {{ post.tags.all |cut:'<QuerySet [' | cut:'<Tag: ' | cut:'>' | cut:',' | cut:']' }} ">
+            <div class="gallery-curve-wrapper">
+                <a class="gallery-cover gray" style="height: {% cycle '250px' '300px' '400px' '400px' '250px' %};">
+                  <!--    ##################################################################################################-->
+                {% if post.pic.url %}
+                    <img src="{{ post.pic.url }}" alt="placeholder">
+                {% else %}
+                    <img src="http://placehold.it/1280x500" alt="placeholder">
+                {% endif %}
+
+                  <!--    ##################################################################################################-->
+                </a>
+
+                <div class="gallery-header">
+                  <!--    ##################################################################################################-->
+                    <span>{{ post.title }}</span>
+                    <br>
+                    <span>{{ post.description | truncatechars:100 }}</span>
+                    <br>
+                    <span>{{ post.likes }} Likes</span>
+                  <!--    ##################################################################################################-->
+                </div>
+
+                <div class="gallery-body">
+                <!--    ##################################################################################################-->
+                    <div class="title-wrapper">
+                      <h3>{{ post.slug }}</h3><p>{{ post.likes }} Likes</p>
+                    </div>
+
+                    <h6 class="description">
+                        {{ post.content | linebreaks | safe }}
+                    </h6>
+
+                    {% if post.pic.url %}
+                        <br>
+                        <img src="{{ post.pic.url }}" width="100%">
+                        <br>
+                    {% endif %}
+
+                    <span>{{ post.published }}</span>
+                    <br>
+
+                    <h3>Comment</h3>
+                    {% if message %}
+                        <p>{{ message }}</p>
+                    {% endif %}
+                    {% for comment in post.comments.all %}
+                        <p>
+                            <strong>{{ comment.name }}</strong>
+                            <small>{{ comment.date_added }}</small>
+                            <br>
+                            {{ comment.body }}
+                        </p>
+                    {% empty %}
+                        <div class="container">
+                            <p>No Comment Yet!</p>
+                        </div>
+                    {% endfor %}
+                    <br>
+                    <h3>Comment</h3>
+                    <form method="POST" action="/">
+                        {% csrf_token %}
+                        <input type="hidden" name="slug" value="{{ post.slug }}">
+                        {{ form_c.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <!--    ##################################################################################################-->
+            </div>
+
+            <div class="gallery-action">
+                <a class="btn-floating btn-large waves-effect waves-light" href="{% url 'postlike' post.slug %}"><i class="material-icons">favorite</i></a>
+
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+{% endblock %}
+

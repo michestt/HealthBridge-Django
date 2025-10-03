@@ -1,0 +1,86 @@
+{% extends 'calories/base.html' %}
+{% block title %} Calories {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} purple lighten-2{% endblock %}
+{% block color2 %} purple lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Calories|Add Food</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col m6">
+            <div class="card-panel hoverable">
+                <h4 class="center-align bold">Select Food</h4>
+
+                <form method="POST" action="" class="login-form form-inline">
+                  {% csrf_token %}
+                    {% for field in form %}
+                    <h5>
+                    {{ field.label }}
+                    </h5>
+                    {{ field }}
+                    {% endfor %}
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Select
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        <div class="col m6">
+            <div class="card-panel hoverable">
+                    <h5 class="center-align">Search food items：</h5>
+                <form method="get">
+                    <h3 class="center-align">{{ myFilter.form }}</h3>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                        <i class="material-icons right">cloud</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col m12">
+            <div class="card-panel hoverable">
+            <h4 class="center-align" >All Food Items </h4>
+                <table class="striped centered highlight">
+                  <thead class="thead-dark">
+                    <tr class="text-center">
+                      <th scope="col">Food Name</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    {% for food in food_items %}
+                    <tr>
+                      <td>{{ food.name }}</td>
+                        <td>{{ food.calorie }}</td>
+                        <td>{{ food.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

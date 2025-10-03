@@ -1,0 +1,129 @@
+{% load static %}
+<!-- Start Container-->
+        <div class="container">
+            <!-- row -->
+            <div class="card-panel">
+                <div class="row">
+            <!-- =========================================
+                           SIDEBAR
+            ==========================================-->
+                <!-- Start Sidebar -->
+                <aside class="col l4 m12 s12 sidebar z-depth-1" id="sidebar">
+                    <!--  Sidebar row -->
+                    <div class="row">
+                        <!--  top section   -->
+                        <div class="heading">
+                            <!-- ====================
+                                      IMAGE
+                            ==========================-->
+                            <div class="feature-img">
+                                <img src="{{ user_profile.profile_picture.url }}" class="responsive-img" alt="">
+                            </div>
+                            <!-- =========================================
+                                       NAVIGATION
+                            ==========================================-->
+                            <!-- ========================================
+                                       NAME AND TAGLINE
+                            ==========================================-->
+                            <div class="title col s12 m12 l9 right  wow fadeIn animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
+                                <h3>{{ user_profile.user.username }}</h3> <!-- title name -->
+                                <span>Coutry: {{ user_profile.get_country_display }}</span>
+                                <p>BOD: {{ user_profile.BOD }}</p> <!-- tagline -->
+                            </div>
+                        </div>
+                         <!-- sidebar info -->
+                        <div class="col l12 m12 s12 sort-info sidebar-item">
+                            <div class="row">
+                                <div class="col m12 s12 l3 icon center-align"> <!-- icon -->
+                                    <br>
+                                   <i class="small material-icons">perm_identity</i>
+                                </div>
+                                <div class="col m12 s12 l9 info wow fadeIn a1 animated"> <!-- text -->
+                                    <div class="section-item-details">
+                                        <h5>{{ user_profile.self_introduction | default:'(No Infomation)' }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MOBILE NUMBER -->
+                        <div class="col l12 m12 s12  mobile sidebar-item">
+                            <div class="row">
+                                <div class="col m12 s12 l3 icon center-align">
+                                    <br>
+                                    <i class="small material-icons">phone</i> <!-- icon -->
+                                </div>
+                                <div class="col m12 s12 l9">
+                                    <div class="section-item-details">
+                                        <h5><a href="tel:{{ user_contact.phone_number }}">{{ user_contact.phone_number }}</a></h5> <!-- Number -->
+                                        <span>Mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  EMAIL -->
+                        <div class="col l12 m12 s12  email sidebar-item ">
+                            <div class="row">
+                                <div class="col m12 s12 l3 icon center-align">
+                                    <br>
+                                    <i class="small material-icons">email</i> <!-- icon -->
+                                </div>
+                                <div class="col m12 s12 l9 info wow fadeIn a3">
+                                    <div class="section-item-details">
+                                        <div class="personal">
+                                            <h5><a href="mailto:{{ user_contact.email }}">{{ user_contact.email }}</a></h5> <!-- Email -->
+                                            <span>My Email</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Email  -->
+                        <div class="col l12 m12 s12  address sidebar-item ">
+                            <div class="row">
+                                <div class="col m12 s12 l3 icon center-align">
+                                    <br>
+                                    <i class="small material-icons">web</i> <!-- icon -->
+                                </div>
+                                <div class="col m12 s12 l9 info" >
+                                    <div class="section-item-details">
+                                        <div class="">
+                                            <a href="{{ user_contact.website }}"><h5>{{ user_contact.website }}</h5></a>
+                                            <span>Website</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>S
+
+                    </div>   <!-- end row -->
+                </aside><!-- end sidebar -->
+
+                <!-- =========================================
+                   Work experiences
+                ==========================================-->
+
+                <div class="col s12 m12 l8 section">
+                    <div class="row">
+                        <div class="section-wrapper z-depth-2">
+                            <div class="section-icon col s12 m12 l2 center-align">
+                                <br>
+                                <br>
+                                <br>
+                                <i class="medium material-icons">web</i>
+                            </div>
+                            <div class="custom-content col s12 m12 l10 ">
+                                <h2>Expertise</h2>
+
+                                <div class="custom-content-wrapper wow fadeIn a2 animated">
+                                    <h4>
+                                        {{ user_profile.expertise | linebreaks | default:'(No Infomation)'}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end row -->
+                </div><!-- end section -->
+            </div> <!-- end row -->
+            </div>
+        </div>  <!-- end container -->

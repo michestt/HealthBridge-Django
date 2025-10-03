@@ -1,0 +1,49 @@
+{% extends 'recipe/base.html' %}
+
+
+{% block title %} Yoga {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} pink lighten-2{% endblock %}
+{% block color2 %} pink lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Yoga</h1>
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block categories %}
+    {% include 'fitforum/yoga_category.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="col m12">
+            <div class="center-align">
+                {% if hour > 18 %}
+                    <h3>Good Night!</h3>
+                {% else %}
+                    <h3>Good Morning!</h3>
+                {% endif %}
+            </div>
+            <div class="center-align">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode1 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+			    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode2 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+			    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode3 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+			    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode4 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+			    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode5 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode6 }} "frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <!--<em>good quotes:{{ quote }}</em>-->
+

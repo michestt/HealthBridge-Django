@@ -1,0 +1,39 @@
+{% extends 'calories/base.html' %}
+{% block title %} Calories {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} red lighten-2{% endblock %}
+{% block color2 %} red lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Calories|Delete Food</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card-panel">
+                <form method="POST" action="{% url 'delete_food' food.id %}" class="align-center">
+                <h5>Are you sure you want to delete:<h4>{{ food }}</h4></h5>
+                {% csrf_token %}
+                <a href="{% url 'profile' %}" class="waves-effect waves-light btn" >Cancel</a>
+                <input type="submit" class="waves-effect waves-light btn" name="Confirm">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

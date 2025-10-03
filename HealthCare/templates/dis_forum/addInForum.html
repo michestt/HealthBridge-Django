@@ -1,0 +1,45 @@
+{% extends 'dis_forum/forum_base.html' %}
+{% block title %} Community {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/main_picture.jpg' %}{% endblock %}
+{% block color1 %} deep-orange{% endblock %}
+{% block color2 %} deep-orange{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Discussion|Forum</h1>
+    <div class="tagline">COME IN! WE WANT TO SHARE YOU SOMETHINGS!</div>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% load materializecss %}
+
+{% block content %}
+    <div class="row">
+        <div class="container">
+            <div class="container">
+                <div class="card-panel center-align">
+                        <form action="{% url 'addInForum' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form | materializecss}}
+                        <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+

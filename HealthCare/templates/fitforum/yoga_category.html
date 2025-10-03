@@ -1,0 +1,5 @@
+{% for n in tv_list %}
+    {% with url_name=request.resolver_match.url_name %}
+        <li {% if url_name == 'yoga-url'%}{% endif %}><a href="{% url 'yoga-url' forloop.counter0 %}">{{ n.name }}</a></li>
+    {% endwith %}
+{% endfor %}

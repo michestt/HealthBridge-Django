@@ -1,0 +1,5 @@
+Thanks For Register
+user: {{ user }}
+register website: register in {{ site }}
+activation link: http://{{ site }}/accounts/activate/{{ activation_key }}
+Expired in {{ expiration_days }} days

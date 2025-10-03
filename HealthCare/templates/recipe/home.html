@@ -1,0 +1,196 @@
+{% extends 'recipe/base.html' %}
+{% block title %} Fitness {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} pink lighten-2{% endblock %}
+{% block color2 %} pink lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Food Recipe</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+{#    <div class="container">#}
+{#        <div class="col m12">#}
+{#          <div class="carousel">#}
+{#            <a class="carousel-item active" href="#one!">#}
+{#                <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" >#}
+{#            </a>#}
+{#            <a class="carousel-item" href="#two!">#}
+{#                <img src="https://images.unsplash.com/photo-1544982590-068dabc956dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" >#}
+{#            </a>#}
+{#            <a class="carousel-item" href="#three!">#}
+{#                <img src="https://ratlamee.com/wp-content/uploads/2018/10/Sweet-Corn-Soup.jpg" >#}
+{#            </a>#}
+{#            <a class="carousel-item" href="#four!">#}
+{#                <img src="https://hdwallsource.com/img/2014/6/food-wallpaper-5775-5940-hd-wallpapers.jpg" >#}
+{#            </a>#}
+{#            <a class="carousel-item" href="#five!">#}
+{#            <img src="https://farm8.staticflickr.com/7778/17269216874_f4d1057324_z.jpg" >#}
+{#            </a>#}
+{#          </div>#}
+{#        </div>#}
+{#    </div>#}
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col m12">
+                    <div class="card-panel ">
+                        <h5 class="center-align">RECIPES OF THE DAY</h5>
+                        {% for i in item %}
+                            {% if i.card_type == 'day' %}
+                                <form action="{% url 'food' food_id=i.id %}" method="POST">
+                                    {%csrf_token %}
+                                    <div class="card hoverable">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <img class="activator" src="{{ i.image_url }}">
+                                        </div>
+
+                                        <div class="card-content">
+                                          <span class="card-title activator grey-text text-darken-4">{{ i.title }}<i class="material-icons right">more_vert</i></span>
+                                        </div>
+
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                          <p>{{ i.description|truncatechars:50 }}</p>
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">See the full recipe
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m12">
+                    <div class="card-panel ">
+                        <h5 class="center-align">Breakfast recipes</h5>
+                        {% for i in item %}
+                            {% if i.card_type == 'breakfast' %}
+                                <form action="{% url 'food' food_id=i.id %}" method="POST">
+                                    {%csrf_token %}
+                                    <div class="card hoverable">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <img class="activator" src="{{ i.image_url }}">
+                                        </div>
+
+                                        <div class="card-content">
+                                          <span class="card-title activator grey-text text-darken-4">{{ i.title }}<i class="material-icons right">more_vert</i></span>
+                                        </div>
+
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                          <p>{{ i.description|truncatechars:50 }}</p>
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">See the full recipe
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m12">
+                    <div class="card-panel ">
+                        <h5 class="center-align">Healthy Lunch Recipes</h5>
+                        {% for i in item %}
+                            {% if i.card_type == 'lunch' %}
+                                <form action="{% url 'food' food_id=i.id %}" method="POST">
+                                    {%csrf_token %}
+                                    <div class="card hoverable">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <img class="activator" src="{{ i.image_url }}">
+                                        </div>
+
+                                        <div class="card-content">
+                                          <span class="card-title activator grey-text text-darken-4">{{ i.title }}<i class="material-icons right">more_vert</i></span>
+                                        </div>
+
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                          <p>{{ i.description|truncatechars:50 }}</p>
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">See the full recipe
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m12">
+                    <div class="card-panel ">
+                        <h5 class="center-align">Dinner recipes</h5>
+                        {% for i in item %}
+                            {% if i.card_type == 'dinner' %}
+                                <form action="{% url 'food' food_id=i.id %}" method="POST">
+                                    {%csrf_token %}
+                                    <div class="card hoverable">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <img class="activator" src="{{ i.image_url }}">
+                                        </div>
+
+                                        <div class="card-content">
+                                          <span class="card-title activator grey-text text-darken-4">{{ i.title }}<i class="material-icons right">more_vert</i></span>
+                                        </div>
+
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                          <p>{{ i.description|truncatechars:50 }}</p>
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">See the full recipe
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+<script type="text/javascript" language="javascript">
+            $( document ).ready(function(){
+
+                $(".button-collapse").sideNav();//mobile screen menu init
+
+                $('.carousel').carousel(); //carousel init
+
+                $('.carousel-slider').slider({full_width: true});
+            });
+
+</script>
+
+{% endblock %}
+

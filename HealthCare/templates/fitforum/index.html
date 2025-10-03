@@ -1,0 +1,108 @@
+{% extends 'recipe/base.html' %}
+
+{% block title %} Fitness|Forum {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} pink lighten-2{% endblock %}
+{% block color2 %} pink lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Fitness|Forum</h1>
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block categories %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="container">
+        <div class="card-panel">
+                <div class='col m12'>
+                    <form name="my form" action="{% url 'fitforum' %}" method="GET">
+                        <h4>Level:</h4>
+                        {% for m in levels %}
+                            <label>
+                            <input name="level" type="radio" value="{{ m.status }}" class="with-gap">
+                            <span>{{ m.status }}</span>
+                            </label>
+                        {% empty %}
+                            <p>
+                              <label>
+                                <input name="group1" type="radio" disabled="disabled" />
+                                <span>No options</span>
+                              </label>
+                            </p>
+                        {% endfor %}
+
+                        <h4>Fitness experience sharing：</h4><br/>
+                        <textarea name='user_post' rows=3 cols=70></textarea>
+                        <div class="input-field col m6">
+                          <input id="user_id" type="text" class="user_id" name="user_id">
+                          <label for="user_id">Your nickname：</label>
+                        </div>
+                        <label for="byear">Fitness start time:</label>
+                        <select name="byear">
+                            {% for year in years %}
+                            <option value="{{year}}">{{year}}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+
+                        <input class="waves-effect waves-light btn" type="submit" value='submit'>
+                        <input class="waves-effect waves-light btn" type="reset" value='reset'>
+
+                    </form>
+                </div>
+                {% if message %}
+                    <div class="row">
+                        <div class="col m3">
+                          <div class="card-panel teal">
+                            <span class="white-text center-align">
+                                {{ message }}
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+
+    <div class="card-panel">
+        <div class="col m12">
+            <h3 class="center-align">Fitness experience sharing</h3><br>
+        </div>
+    </div>
+
+
+    <div class='row'>
+        <div class='col m12'>
+
+        </div>
+    </div>
+    <div class="row">
+        {% for p in posts %}
+         <div class="col m4">
+            <div class='card blue-grey darken-1'>
+                <div class="card-content white-text">
+                    <span class="card-title">Level:{{ p.level }} <br>Nickname:{{ p.nickname }}</span>
+                    <p>{{ p.message | linebreaks }}</p>
+                    <div class="card-action">
+                      <a>Fitness Started Year: {{ p.byear }}</a><br>
+                        <a>{{ p.pub_time }}</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

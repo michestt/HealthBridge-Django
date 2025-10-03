@@ -1,0 +1,52 @@
+{% extends 'recipe/base.html' %}
+{% block title %} Fitness {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} pink lighten-2{% endblock %}
+{% block color2 %} pink lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Food Recipe</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+        <div class="container">
+                <div class="col m12">
+                    <div class="card-panel ">
+                        <div class="row">
+                            <div class="col m8">
+                                <h5 class="center-align">{{ dish.title }}</h5>
+                                <img class="image_size center-align" src="{{dish.image_url}}" style="width:100%">
+                                <br>
+                                <h5 class="center-align">Cooking Time: {{dish.time_to_cook}} min</h5>
+                                <br>
+                                <div class="ingredients">
+                                <h4>Ingredients:</h4>
+                                <br>
+                                <p>{{dish.ingredients|linebreaksbr}}</p>
+                                </div>
+                                <br>
+                        </div>
+                        <div class="col m4">
+                            <h5>Directions to cook</h5>
+                            <p>{{dish.prep_method|linebreaksbr}}</p>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+{% endblock %}
+

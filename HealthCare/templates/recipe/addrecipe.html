@@ -1,0 +1,74 @@
+{% extends 'recipe/base.html' %}
+{% block title %} Fitness {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/background_picture.jpg' %}{% endblock %}
+{% block color1 %} pink lighten-2{% endblock %}
+{% block color2 %} pink lighten-2{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Food Recipe</h1>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="container">
+                <div class="card-panel ">
+                    <div class="col m12">
+                        <h5 class="center-align">My new recipe</h5>
+                        <form action="" method="POST">
+                            {%csrf_token %}
+                            <p>Title</p>
+                            <input type="text" class="form-control" name="title">
+                            <br>
+                            <p>Image url</p>
+                            <textarea class="form-control" name="image_url"></textarea>
+                            <br>
+                            <p>Description</p>
+                            <textarea class="form-control" name="description"></textarea>
+                            <br>
+                            <p>Time to cook</p>
+                            <input type="text" class="form-control" name="time_to_cook">
+                            <br>
+
+
+                            <div class="col m4">
+                                <br>
+                                <p>Ingredients</p>
+                                <textarea class="form-control" name="ingredients"></textarea>
+                                <br>
+                            <p>Preperation method</p>
+                            <textarea class="form-control" name="prep_method"></textarea>
+                            <br>
+
+                            <p>Dish type</p>
+                            <select name="card_type">
+                                <option value = "breakfast">Breakfast</option>
+                                <option value = "lunch">Lunch</option>
+                                <option value = "dinner">Dinner</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p>Contribution</p>
+                            <input type="text" class="form-control" name="contribution">
+                            <br>
+                            <button type="submit" class="btn btn-success">Submit recipe</button>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

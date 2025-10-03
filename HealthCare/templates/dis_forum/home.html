@@ -1,0 +1,81 @@
+{% extends 'dis_forum/forum_base.html' %}
+{% block title %} Community {% endblock %}
+{% load static %}
+{% block Top_background %}{% static 'images/main_picture.jpg' %}{% endblock %}
+{% block color1 %} deep-orange{% endblock %}
+{% block color2 %} deep-orange{% endblock %}
+{% block Top_href %}
+{% endblock %}
+
+{% block Top_href_drop %}
+{% endblock %}
+
+{% block header_title %}
+    <h1>Discussion|Forum</h1>
+    <div class="tagline">COME IN WE WANT TO SHARE YOU SOMETHINGS!</div>
+{% endblock %}
+
+
+{% block categories %}
+{% endblock %}
+
+{% block drop_menu %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="container">
+        <div class="col m6">
+            <div class="card-panel hoverable">
+                <h5 class="center-align">Currently active forums:</h5>
+                <h3 class="center-align red-text">{{count}}</h3>
+            </div>
+        </div>
+        <div class="col m6">
+            <div class="card-panel hoverable center-align">
+                <h5 class="center-align">Come And Share Something!</h5>
+                <a class="btn-floating btn-large waves-effect waves-light red " href="{% url 'addInForum' %}"><i class="material-icons">add</i>Add more</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card-panel hoverable deep-orange">
+            <div class="col m12">
+                <h3 class="center-align white-text">Forum</h3><br>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+    <div class="container">
+        {% for forum in forums %}
+         <div class="col m4">
+            <div class='card-panel hoverable'>
+                <a href='{{forum.link}}'><h3>{{forum.topic}}</h3></a>
+                <p>{{forum.description}}</p>
+                <p class="purple-text"> By: {{forum.name}}</p>
+                <p class="purple-text">Email: {{forum.email}}</p>
+                <h6 class="deep-orange-text">Views from other users</h6>
+                {%for discuss in discussions%}
+                    {%for objs in discuss%}
+                        <p>
+                        {% if objs.forum == forum %}
+                           {{objs.name}}({{objs.mood}}): {{objs.discuss}}             {{objs.pub_time}}
+                           <br>
+                        {% endif %}
+                        </p>
+                    {%endfor%}
+                {%endfor%}
+                <a class="waves-effect waves-light btn " href="{% url 'addInDiscussion' %}">Comment</a>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}
+
